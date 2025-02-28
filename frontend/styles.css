@@ -1,0 +1,644 @@
+/* Vibrant Restaurant App Design */
+:root {
+    /* Vibrant color palette */
+    --primary: #6c5ce7;         /* Bright purple */
+    --primary-dark: #5749c7;    /* Darker purple */
+    --primary-light: #a29bfe;   /* Light purple */
+    --accent: #00d2d3;          /* Teal */
+    --accent-dark: #01a3a4;     /* Dark teal */
+    --accent-light: #81ecec;    /* Light teal */
+    --highlight: #ffeaa7;       /* Soft yellow highlight */
+    --warning: #ff7675;         /* Coral red */
+    --success: #55efc4;         /* Mint green */
+    --text-dark: #2d3436;       /* Near black */
+    --text-medium: #636e72;     /* Medium gray */
+    --text-light: #b2bec3;      /* Light gray */
+    --background: #f9f9f9;      /* Off-white */
+    --white: #ffffff;           /* Pure white */
+    --card-bg: #ffffff;         /* Card background */
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(108, 92, 231, 0.1);
+    --shadow-md: 0 4px 12px rgba(108, 92, 231, 0.15);
+    --shadow-lg: 0 8px 24px rgba(108, 92, 231, 0.2);
+    --shadow-hover: 0 12px 32px rgba(108, 92, 231, 0.25);
+    
+    /* Border radius */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-fast: all 0.2s ease;
+    --transition-normal: all 0.3s ease;
+    --transition-slow: all 0.5s ease;
+
+    --progress: 0; /* This will be updated by JavaScript */
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background);
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(108, 92, 231, 0.08) 0%, transparent 30%),
+      radial-gradient(circle at 80% 80%, rgba(0, 210, 211, 0.08) 0%, transparent 30%);
+    min-height: 100vh;
+  }
+  
+  /* Vibrant header */
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    padding: 1.25rem 2rem;
+    box-shadow: 0 4px 20px rgba(108, 92, 231, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  header h1 {
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+    font-size: 2rem;
+  }
+  
+  header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 40%;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 3px;
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+  }
+  
+  nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-full);
+    transition: var(--transition-normal);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    display: inline-block;
+  }
+  
+  nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  nav ul li a.active {
+    background-color: var(--accent-dark);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Main content */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .filters, .search-container {
+    background-color: var(--card-bg);
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    border-top: 4px solid var(--primary);
+    transition: var(--transition-normal);
+  }
+  
+  .filters:hover, .search-container:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+  }
+  
+  .filters h2, .search-container h2 {
+    margin-bottom: 1.25rem;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+  }
+  
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e1e5f2;
+    border-radius: var(--radius-md);
+    transition: var(--transition-normal);
+    font-size: 1rem;
+    color: var(--text-dark);
+  }
+  
+  .form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+  }
+  
+  /* Vibrant buttons */
+  button {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 0.8rem 1.75rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: var(--transition-normal);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.25);
+  }
+  
+  button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(108, 92, 231, 0.35);
+  }
+  
+  button:active {
+    transform: translateY(-1px);
+  }
+  
+  button:disabled {
+    background-color: var(--text-light);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+  
+  /* Restaurant card grid */
+  .restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .restaurant-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-normal);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .restaurant-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+  }
+  
+  .restaurant-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: var(--transition-normal);
+    border-bottom: 4px solid var(--primary);
+  }
+  
+  .restaurant-card:hover img {
+    transform: scale(1.05);
+  }
+  
+  .restaurant-card .content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .restaurant-card h3 {
+    margin-bottom: 0.75rem;
+    color: var(--primary);
+    font-weight: 700;
+    line-height: 1.3;
+    font-size: 1.3rem;
+  }
+  
+  .restaurant-card .cuisines {
+    color: var(--text-medium);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+  }
+  
+  .restaurant-card .location {
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+  
+  .restaurant-card .location::before {
+    content: "📍";
+    font-size: 1rem;
+  }
+  
+  .restaurant-card .price {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-weight: 600;
+    color: var(--white);
+    background-color: var(--accent);
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    box-shadow: 0 3px 8px rgba(0, 210, 211, 0.3);
+  }
+  
+  /* Colorful loading state */
+  .loading {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-medium);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .loading::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(108, 92, 231, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--primary);
+    border-bottom-color: var(--accent);
+    animation: spinner 1.5s linear infinite;
+  }
+  
+  @keyframes spinner {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Pagination styling */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    gap: 0.5rem;
+  }
+  
+  .pagination button {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+  
+  .pagination span {
+    margin: 0 1rem;
+    color: var(--text-medium);
+    font-weight: 500;
+  }
+  
+  /* Detail page styling */
+  .detail-container {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .detail-header {
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(108, 92, 231, 0.1);
+    padding-bottom: 1.5rem;
+  }
+  
+  .detail-header h2 {
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .detail-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  
+  .detail-section {
+    margin-bottom: 2rem;
+  }
+  
+  .detail-section h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+  
+  .detail-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 3px;
+  }
+  
+  #preview-container {
+    margin: 1.5rem 0;
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  
+  #preview-container img {
+    max-width: 100%;
+    max-height: 350px;
+    display: block;
+    margin: 0 auto;
+    transition: var(--transition-normal);
+  }
+  
+  #preview-container:hover img {
+    transform: scale(1.03);
+  }
+  
+  footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    background-color: var(--primary-dark);
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Feature badges */
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .badge-primary {
+    background-color: rgba(108, 92, 231, 0.1);
+    color: var(--primary);
+  }
+  
+  .badge-accent {
+    background-color: rgba(0, 210, 211, 0.1);
+    color: var(--accent-dark);
+  }
+  
+  .badge-warning {
+    background-color: rgba(255, 118, 117, 0.1);
+    color: var(--warning);
+  }
+  
+  /* Notification toast */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, var(--primary), var(--accent-dark));
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .toast.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: 6px;
+    border: 3px solid #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
+  
+  /* Rating stars */
+  .stars {
+    color: #fdcb6e;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+  
+  /* Ratings pill */
+  .rating {
+    background-color: var(--accent);
+    color: white;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 210, 211, 0.2);
+  }
+  
+  .rating::before {
+    content: "★";
+    margin-right: 0.25rem;
+  }
+  
+  /* Promotion tags */
+  .promo-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, var(--warning), #ff9f43);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%);
+    z-index: 1;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 992px) {
+    .detail-info {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    header {
+      padding: 1rem;
+    }
+    
+    main {
+      padding: 1rem;
+    }
+    
+    .restaurant-grid {
+      gap: 1rem;
+    }
+    
+    nav ul {
+      flex-wrap: wrap;
+    }
+  }
+  
+  /* Interactive hover effects */
+  .restaurant-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+    opacity: 0;
+    z-index: -1;
+    transition: var(--transition-slow);
+    border-radius: var(--radius-md);
+  }
+  
+  .restaurant-card:hover::before {
+    opacity: 0.03;
+  }
+  
+  /* Animation for new items */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .new-item {
+    animation: fadeIn 0.6s ease-out;
+  }
+  /* Scroll-to-top button with progress circle */
+/* Scroll-to-top button with progress circle */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary); /* Use your primary color */
+    color: var(--white); /* Use your white color */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top::before {
+    content: '↑';
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Circular progress bar */
+.scroll-to-top::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--white); /* Progress color */
+    transform: rotate(-90deg);
+    transition: var(--transition);
+    clip: rect(0, 50px, 50px, 25px); /* Clip to show progress */
+}
+
+/* Hide the button initially */
+.scroll-to-top.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Show the button when scrolled */
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Search - Nutritor Finder</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Nutritor Restaurant Finder</h1>
+        <nav>
+            <ul>
+                <li><a href="index.htm">Restaurant List</a></li>
+                <li><a href="location_search.htm">Location Search</a></li>
+                <li><a href="image_search.htm" class="active">Image Search</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search-container">
+            <h2>Find Restaurants by Food Image</h2>
+            <p>Upload an image of food to find restaurants that serve similar cuisines.</p>
+            <form id="image-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="food-image">Food Image:</label>
+                    <input type="file" id="food-image" name="image" accept="image/*" required>
+                </div>
+                <div id="preview-container" class="hidden">
+                    <img id="image-preview" src="#" alt="Preview">
+                </div>
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <section id="image-results" class="restaurant-grid">
+            <!-- Results will be loaded here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Nutritor Restaurant Finder</p>
+    </footer>
+
+    <script src="image_search.js"></script>
+</body>
+</html>
